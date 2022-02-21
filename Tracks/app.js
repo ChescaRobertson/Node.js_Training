@@ -4,8 +4,6 @@ const yargs = require('yargs');
 const _ = require('lodash');
 
 const argv = yargs.argv;
-//console.log(argv);
-//let command = process.argv[2];
 let command = argv._[0];
 
 switch (command) {

@@ -19,7 +19,7 @@ let displayTrack = (track) => {
       `Title: ${track.title} \nArtist: ${track.artist} \nAlbum: ${track.album}\n`
     );
   } else {
-    console.log('No such track');
+    console.log('No tracks');
   }
 };
 
