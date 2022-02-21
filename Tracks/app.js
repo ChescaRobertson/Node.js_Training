@@ -10,16 +10,21 @@ let command = argv._[0];
 
 switch (command) {
   case 'add':
-    tracks.addTrack(argv.artist, argv.title, argv.album);
+    tracks.addTrack(argv.title, argv.artist, argv.album);
     break;
   case 'list':
-    tracks.listTrack;
+    let allTracks = tracks.listTracks();
+    console.log(`Displaying ${allTracks.length} tracks:\n`);
+    allTracks.forEach((track) => {
+      tracks.displayTrack(track);
+    });
     break;
   case 'get':
-    tracks.getTrack(argv.title);
+    let track = tracks.getTrack(argv.title);
+    tracks.displayTrack(track);
     break;
   case 'remove':
-    tracks.removeTrack(argv.artist, argv.title, argv.album);
+    tracks.removeTrack(argv.title);
     break;
   default:
     console.log('Invalid command');
