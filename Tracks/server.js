@@ -1,9 +1,11 @@
 let express = require('express');
 let app = express();
 let tracks = require('./tracks');
+let path = require('path');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '//tracks.html');
