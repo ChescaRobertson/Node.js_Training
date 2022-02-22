@@ -3,8 +3,31 @@ const tracks = require('./tracks.js');
 const yargs = require('yargs');
 const _ = require('lodash');
 
-const argv = yargs.argv;
-let command = argv._[0];
+const argv = yargs
+  .options({
+    c: {
+      demand: true,
+      alias: 'command',
+      describe: 'enter list, add, get or remove',
+      string: true,
+    },
+    t: {
+      alias: 'title',
+      string: true,
+    },
+    a: {
+      alias: 'artist',
+      string: true,
+    },
+    b: {
+      alias: 'album',
+      string: true,
+    },
+  })
+  .help()
+  .alias('help', 'h').argv;
+
+let command = argv.command;
 
 switch (command) {
   case 'add':
