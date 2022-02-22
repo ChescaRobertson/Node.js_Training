@@ -1,5 +1,6 @@
 const fs = require('fs');
-const tracks = require('./tracks.js');
+//const tracks = require('./tracks.js');
+const tracks = require('./tracksdb.js');
 const yargs = require('yargs');
 const _ = require('lodash');
 
@@ -34,18 +35,31 @@ switch (command) {
     tracks.addTrack(argv.title, argv.artist, argv.album);
     break;
   case 'list':
-    let allTracks = tracks.listTracks();
-    console.log(`Displaying ${allTracks.length} tracks:\n`);
-    allTracks.forEach((track) => {
-      tracks.displayTrack(track);
-    });
+    tracks
+      .listTracks()
+      .then((allTracks) => {
+        console.log(`Displaying ${allTracks.length} tracks:\n`);
+        allTracks.forEach((track) => {
+          tracks.displayTrack(track);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     break;
   case 'get':
-    let track = tracks.getTrack(argv.title);
-    tracks.displayTrack(track);
+    tracks
+      .getTrack(argv.title)
+      .then((track) => {
+        tracks.displayTrack(track);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     break;
   case 'remove':
     tracks.removeTrack(argv.title);
+    console.log(`Removed ${argv.title}`);
     break;
   default:
     console.log('Invalid command');
