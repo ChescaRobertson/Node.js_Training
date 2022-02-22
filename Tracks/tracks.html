@@ -7,6 +7,30 @@
     <title>Tracks</title>
   </head>
   <body>
-    <form action=""></form>
+    <form action="http://127.0.0.1:8081/addTrack" method="POST">
+      Title: <input type="text" name="title" /><br />
+      Artist: <input type="text" name="artist" /><br />
+      Album: <input type="text" name="album" /><br />
+      <input type="submit" value="Add Track to Library" />
+
+      <input
+        type="submit"
+        value="Remove Track"
+        formaction="http://127.0.0.1:8081/remove"
+        formmethod="GET"
+      />
+      <input
+        type="submit"
+        value="Get Track"
+        formaction="http://127.0.0.1:8081/getTrack"
+        formmethod="GET"
+      />
+      <input
+        type="submit"
+        value="View Full Library"
+        formaction="http://127.0.0.1:8081/list"
+        formmethod="GET"
+      />
+    </form>
   </body>
 </html>
